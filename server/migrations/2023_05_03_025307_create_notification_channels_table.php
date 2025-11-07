@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::connection(config('storefront.connection.db'))->create('notification_channels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('uuid', 36)->nullable()->index();
+            $table->char('uuid', 36)->nullable()->unique();
             $table->char('company_uuid', 36)->nullable()->index('notification_channels_company_uuid_foreign');
             $table->char('created_by_uuid', 36)->nullable()->index('notification_channels_created_by_uuid_foreign');
             $table->string('owner_uuid')->nullable();
